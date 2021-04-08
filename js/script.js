@@ -8,15 +8,30 @@ function initVue() {
     new Vue({
         el: '#app',
         data: {
-
+            todos: [
+                'elem 3',
+                'elem 1',
+                'elem 4',
+                'elem 44',
+            ],
+            newTodo:'' // input di partenza vuoto
         },
-        methods: {
 
+        methods: {
+            createNewTodo: function(){
+                if(this.newTodo.length > 0){
+
+                    this.todos.push(this.newTodo);
+                    this.newTodo = '';
+                }
+            },
+            deleteTodo: function(index){
+                this.todos.splice(index, 1);
+            }
         }
     });
-}
+}   // fine initVue
 function init() {
     initVue();
 }
-// $(init);
 document.addEventListener('DOMContentLoaded', init);

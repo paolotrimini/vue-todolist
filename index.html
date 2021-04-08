@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- VueJS -->
@@ -14,6 +15,27 @@
     <script src="js/script.js" charset="utf-8"></script>
 </head>
 <body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo Boolean">
+            </div>
+        </div>
+        <div class="new-todo">
+            <input v-model="newTodo" @keyup.enter="createNewTodo" class="todo" type="text" placeholder="New Todo">
+            <button @click="createNewTodo" class="fas fa-times">Aggiungi</button>
+        </div>
+        <div class="todos-container">
+            <ul v-if="todos.length > 0">
+                <li v-for="(todo, index) in todos" class="todo">
+                    {{ todo }}
+                    <i @click="deleteTodo(index)" class="cursor-pointer fas fa-times"></i>
+                </li>
+            </ul>
+            <h2 v-else>Non ci sono elementi!</h2>
+        </div>
+        
+    </div>
 
 </body>
 </html>
